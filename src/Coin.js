@@ -1,11 +1,12 @@
 import React from "react";
 
-function Coin({ name, rank, image, currentPrice, ath, lastUpdated }) {
+function Coin({ name, symbol, rank, image, currentPrice, ath, lastUpdated }) {
   return (
     <div className="coin-container">
       <h3>
         <img className="coin-image" src={image} alt={name} /> {name}
-      </h3>
+      </h3>{" "}
+      <p className="coin-rank">({symbol.toUpperCase()})</p>
       <span className="coin-rank">
         <strong>Rank:</strong> #{rank}
       </span>

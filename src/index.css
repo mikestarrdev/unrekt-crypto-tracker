@@ -45,8 +45,9 @@ code {
 /* Tracking-container.js styles */
 
 .tracking-container {
+  float: left;
   border: 1px solid black;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
@@ -62,15 +63,15 @@ code {
 /* Coin.js styles */
 
 .coin-container {
-  display: flexbox;
+  display: block;
   float: left;
+  align-items: center;
   border: 1px solid black;
   border-radius: 5px;
   width: auto;
   height: auto;
   padding: 1em;
-  margin-left: 1em;
-  margin-top: 1em;
+  margin: 1em;
 }
 
 .coin-image {
@@ -92,4 +93,11 @@ code {
 
 .coin-rank {
   font-size: small;
+}
+
+.footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  /* padding: 10px; */
+  /* margin-top: 1em; */
 }
