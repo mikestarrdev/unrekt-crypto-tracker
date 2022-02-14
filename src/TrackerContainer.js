@@ -51,6 +51,8 @@ function TrackerContainer() {
         currentPrice={coin.current_price}
         ath={coin.ath}
         lastUpdated={coin.last_updated}
+        high24h={coin.high_24h}
+        low24h={coin.low_24h}
       />
     );
   });
