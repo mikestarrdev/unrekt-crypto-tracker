@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Coin({
   name,
@@ -10,7 +11,24 @@ function Coin({
   lastUpdated,
   high24h,
   low24h,
+  priceChangePercent24h,
 }) {
+  const [chartData, setChartData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7&interval=daily`
+      )
+      .then((res) => res)
+      .then((chart) => {
+        // console.log(chart.prices);
+        setChartData(chart.data);
+      });
+  }, []);
+
+  // console.log("chartData", chartData);
+
   return (
     <div className="coin-container">
       <h3>
@@ -39,6 +57,10 @@ function Coin({
       <p className="small-stats">
         <strong>Last updated:</strong> <em>new Date({lastUpdated})</em>
       </p>
+      <p>
+        <strong>Price change % 24h:</strong> ${priceChangePercent24h}
+      </p>
+      {/* <div>{fillChart}</div> */}
     </div>
   );
 }

@@ -46,6 +46,7 @@ code {
 
 .tracking-container {
   float: left;
+  clear: both;
   border: 1px solid black;
   width: 100%;
   margin: auto;
@@ -78,15 +79,6 @@ code {
   width: 1.5em;
 }
 
-.refresh-btn {
-  background-color: orange;
-  color: black;
-  padding: 0.5em;
-  border-radius: 10px;
-  font-weight: bold;
-  border: solid 2px gray;
-}
-
 .small-stats {
   font-size: xx-small;
 }
@@ -95,9 +87,48 @@ code {
   font-size: small;
 }
 
-.footer {
-  background-color: #f1f1f1;
+.portfolio-container:after {
+  content: "";
+  display: table;
+  clear: both;
+  align-content: center;
+}
+
+.column-left {
+  float: left;
+  width: 25%;
+  padding: 15px;
+  border: 1px solid black;
+  align-content: center;
+  margin: 0.5em;
+}
+
+.column-right {
+  float: left;
+  width: 65%;
+  padding: 15px;
+  border: 1px solid black;
+  margin: 0.5em;
+}
+
+.table,
+tr,
+td,
+thead {
+  border-bottom: 1px solid gray;
+  border-bottom-width: 2px;
+  border-left: 1px solid gray;
+  padding: 0.3em;
+}
+
+.column-left,
+h2 {
+  text-align: center;
+}
+
+.foot {
+  /* background-color: #f1f1f1; */
   text-align: center;
   /* padding: 10px; */
-  /* margin-top: 1em; */
+  margin-top: 1vh;
 }

@@ -1,0 +1,94 @@
+{
+  "portfolio": [
+    {
+      "coin": "avax",
+      "dateOfBuy": "2022-01-04",
+      "price": "99",
+      "gasCost": "",
+      "quantity": "50",
+      "remarks": "",
+      "id": 1
+    },
+    {
+      "coin": "avax",
+      "dateOfBuy": "2022-01-04",
+      "price": "80",
+      "gasCost": "",
+      "quantity": "40",
+      "remarks": "",
+      "id": 2
+    },
+    {
+      "coin": "ftm",
+      "dateOfBuy": "2022-01-04",
+      "price": "2",
+      "gasCost": "",
+      "quantity": "400",
+      "remarks": "",
+      "id": 3
+    },
+    {
+      "coin": "ftm",
+      "dateOfBuy": "2022-01-04",
+      "price": "2",
+      "gasCost": "",
+      "quantity": "100",
+      "remarks": "",
+      "id": 4
+    },
+    {
+      "coin": "btc",
+      "dateOfBuy": "2022-01-04",
+      "price": "40000",
+      "gasCost": "",
+      "quantity": "5",
+      "remarks": "",
+      "id": 5
+    },
+    {
+      "coin": "btc",
+      "dateOfBuy": "2022-01-13",
+      "price": "40000",
+      "gasCost": "",
+      "quantity": "3",
+      "remarks": "",
+      "id": 6
+    },
+    {
+      "coin": "btc",
+      "dateOfBuy": "2019-02-10",
+      "price": "20000",
+      "gasCost": "",
+      "quantity": "10",
+      "remarks": "",
+      "id": 7
+    },
+    {
+      "coin": "btc",
+      "dateOfBuy": "",
+      "price": "1",
+      "gasCost": "",
+      "quantity": "0.5",
+      "remarks": "",
+      "id": 8
+    },
+    {
+      "coin": "ltc",
+      "dateOfBuy": "",
+      "price": "",
+      "gasCost": "",
+      "quantity": "33",
+      "remarks": "",
+      "id": 9
+    },
+    {
+      "coin": "avax",
+      "dateOfBuy": "",
+      "price": "",
+      "gasCost": "",
+      "quantity": "33",
+      "remarks": "",
+      "id": 10
+    }
+  ]
+}

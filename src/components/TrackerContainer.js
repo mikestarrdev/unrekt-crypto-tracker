@@ -2,6 +2,7 @@ import react, { useEffect, useState } from "react";
 import axios from "axios";
 import Coin from "./Coin";
 import Filter from "./Filter";
+import Portfolio from "./Portfolio";
 
 function TrackerContainer() {
   const [coinList, setCoinList] = useState([]);
@@ -15,8 +16,11 @@ function TrackerContainer() {
     axios
       .get(url)
       .then((res) => res)
+      .catch((err) => {
+        console.log(err);
+      })
       .then(({ data }) => {
-        console.log("data: ", data);
+        // console.log("data: ", data);
         setCoinList(() => data);
       });
   }, []);
@@ -31,8 +35,10 @@ function TrackerContainer() {
   }
 
   const filteredSearch = coinList.filter((coin) => {
-    const coinId = coin.id.includes(searched.toLowerCase());
-    const coinSymbol = coin.symbol.includes(searched.toLowerCase());
+    const coinId = coin.id.toLowerCase().includes(searched.toLowerCase());
+    const coinSymbol = coin.symbol
+      .toLowerCase()
+      .includes(searched.toLowerCase());
     if (searched === "") {
       return coin;
     } else if (coinId || coinSymbol) {
@@ -53,6 +59,7 @@ function TrackerContainer() {
         lastUpdated={coin.last_updated}
         high24h={coin.high_24h}
         low24h={coin.low_24h}
+        priceChangePercent24h={coin.price_change_percentage_24h}
       />
     );
   });
@@ -66,6 +73,7 @@ function TrackerContainer() {
           handleSearched={handleSearched}
           handleDisplayedResults={handleDisplayedResults}
         />
+        <Portfolio coinList={coinList} />
         <div>{coins}</div>
       </div>
     </div>
