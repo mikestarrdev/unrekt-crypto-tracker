@@ -10,6 +10,7 @@ function Portfolio({ coinList }) {
   const [quantity, setQuantity] = useState("");
   const [remarks, setRemarks] = useState("");
   const [portfolio, setPortfolio] = useState([]);
+  const [currentTokenPrices, setCurrentTokenPrices] = useState({});
 
   const cryptoTicker = coinList.map((ticker, index) => {
     return (
@@ -22,7 +23,7 @@ function Portfolio({ coinList }) {
   function handleSubmitCoin(e) {
     e.preventDefault();
     const newCoinEntry = {
-      coin,
+      coin: coin.toLowerCase(),
       dateOfBuy,
       price,
       gasCost,
@@ -54,17 +55,17 @@ function Portfolio({ coinList }) {
 
   const tableHeadings = portfolio.map((entry, index) => {
     return (
-      <>
-        <tr>
-          <td>{entry.coin.toUpperCase()}</td>
-          <td>{entry.dateOfBuy}</td>
-          <td>{entry.quantity}</td>
-          <td>{entry.price}</td>
-          <td>{!entry.gasCost ? "-" : entry.gasCost}</td>
-        </tr>
-      </>
+      <tr key={index}>
+        <td>{entry.coin.toUpperCase()}</td>
+        <td>{entry.dateOfBuy}</td>
+        <td>{entry.quantity}</td>
+        <td>${entry.price}</td>
+        <td>{!entry.gasCost ? "-" : entry.gasCost}</td>
+      </tr>
     );
   });
+
+  //portfolio calculations
 
   //put total costs into array
   const totalCostUSD = portfolio.map((cost) => {
@@ -80,8 +81,44 @@ function Portfolio({ coinList }) {
   }
 
   const totalPortfolioValue = portfolio.map((entry) => {
-    return {}
+    return {};
   });
+
+  //calculate current price
+  //loop over portfolio. Create object with all tokens, add total quantity of holdings, and total current value of tokens (pulled in from a variable from parent scope)
+
+  console.log("coinList: ", coinList);
+  console.log("portfolio", portfolio);
+
+  //create object where each key is a token. No duplicates
+
+  function portfolioValueCalc() {
+    //create object of tokens:quantity
+    const portfolioQuantities = {};
+    portfolio.forEach((trade) => {
+      if (!portfolioQuantities[trade.coin]) {
+        portfolioQuantities[trade.coin.toLowerCase()] = {
+          quantity: Number(trade.quantity),
+        };
+      } else {
+        portfolioQuantities[trade.coin] = {
+          quantity:
+            Number(trade.quantity) + portfolioQuantities[trade.coin].quantity,
+        };
+      }
+      //loop over coinList and use find()
+
+      const coinPrice = coinList.find((coin) => {
+        if (coin.symbol.toLowerCase() === trade.coin) {
+          console.log(coin.current_price);
+          portfolioQuantities[trade.coin]["current_price"] = coin.current_price;
+        }
+      });
+    });
+    console.log("portfolioQuantities", portfolioQuantities);
+  }
+
+  portfolioValueCalc();
 
   return (
     <div className="portfolio-container">
@@ -154,28 +191,36 @@ function Portfolio({ coinList }) {
       </div>
 
       <div className="column-right">
-        <h3>Your portfolio</h3>
+        <h3>Your Trades</h3>
         <table className="table">
           <thead>
             <tr>
               <th>Coin</th>
               <th>Date of trade</th>
               <th>Quantity</th>
-              <th>Cost in USD</th>
+              <th>Cost basis (USD)</th>
               <th>Gas Cost</th>
             </tr>
           </thead>
           <tbody>
             {tableHeadings}
             <tr>
-              <strong>Totals</strong>
+              <td>Totals</td>
             </tr>
             <tr />
             <tr />
+
             <tr>
-              Total expenses: <strong>${sumCostUSD().toLocaleString()}</strong>
+              <td>
+                <strong>Total expenses:</strong> $
+                {sumCostUSD().toLocaleString()}
+              </td>
             </tr>
-            <tr>Current portfolio value: {null}</tr>
+            <tr>
+              <td>
+                <strong>Current portfolio value:</strong> {null}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

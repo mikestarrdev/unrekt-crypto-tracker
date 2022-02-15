@@ -1,11 +1,18 @@
 import React from "react";
+import { BrowserRouter, NavLink } from "react-router-dom";
 
 function Nav() {
   return (
     <nav className="nav-bar">
-      <a href="#">Home</a>
-      <a href="#">Your Favorites</a>
-      <a href="#">Track your portfolio</a>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to exact="/favorites">
+        Favorites
+      </NavLink>
+      <NavLink to exact="/track">
+        Track Your Portfolio
+      </NavLink>
+      {/* <a href="/favorites">Your Favorites</a>
+      <a href="/track">Track your portfolio</a> */}
     </nav>
   );
 }
