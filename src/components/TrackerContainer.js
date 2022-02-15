@@ -20,7 +20,7 @@ function TrackerContainer() {
         console.log(err);
       })
       .then(({ data }) => {
-        console.log("data: ", data);
+        // console.log("data: ", data);
         setCoinList(() => data);
       });
   }, []);
@@ -73,7 +73,7 @@ function TrackerContainer() {
           handleSearched={handleSearched}
           handleDisplayedResults={handleDisplayedResults}
         />
-        <Portfolio />
+        <Portfolio coinList={coinList} />
         <div>{coins}</div>
       </div>
     </div>
