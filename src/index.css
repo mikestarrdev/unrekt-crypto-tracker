@@ -17,6 +17,10 @@ code {
     monospace;
 }
 
+h3 {
+  text-align: center;
+}
+
 .header {
   text-align: center;
   background-color: #f1f1f1;
@@ -96,7 +100,7 @@ code {
 
 .column-left {
   float: left;
-  width: 25%;
+  width: 30%;
   padding: 15px;
   border: 1px solid black;
   align-content: center;
@@ -111,9 +115,14 @@ code {
   margin: 0.5em;
 }
 
+.summary-table {
+  text-align: center;
+}
+
 .table,
 tr,
 td,
+th,
 thead {
   border-bottom: 1px solid gray;
   border-bottom-width: 2px;

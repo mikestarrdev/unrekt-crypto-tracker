@@ -10,15 +10,6 @@
       "id": 1
     },
     {
-      "coin": "avax",
-      "dateOfBuy": "2022-01-04",
-      "price": "80",
-      "gasCost": "",
-      "quantity": "40",
-      "remarks": "",
-      "id": 2
-    },
-    {
       "coin": "ftm",
       "dateOfBuy": "2022-01-04",
       "price": "2",
@@ -73,22 +64,31 @@
       "id": 8
     },
     {
-      "coin": "ltc",
-      "dateOfBuy": "",
-      "price": "",
+      "coin": "doge",
+      "dateOfBuy": "2022-02-03",
+      "price": ".11",
       "gasCost": "",
-      "quantity": "33",
+      "quantity": "15000",
       "remarks": "",
       "id": 9
     },
     {
-      "coin": "avax",
+      "coin": "xrp",
       "dateOfBuy": "",
       "price": "",
       "gasCost": "",
-      "quantity": "33",
+      "quantity": "100",
       "remarks": "",
       "id": 10
+    },
+    {
+      "coin": "btc",
+      "dateOfBuy": "",
+      "price": "20000",
+      "gasCost": "",
+      "quantity": "1",
+      "remarks": "",
+      "id": 11
     }
   ]
 }

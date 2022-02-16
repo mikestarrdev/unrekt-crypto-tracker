@@ -11,6 +11,11 @@ function Portfolio({ coinList }) {
   const [remarks, setRemarks] = useState("");
   const [portfolio, setPortfolio] = useState([]);
   const [currentTokenPrices, setCurrentTokenPrices] = useState({});
+  const [coinQuantity, setCoinQuantity] = useState(0);
+  const [totalCoinValue, setTotalCoinValue] = useState(0);
+
+  const portfolioQuantities = {};
+  const portfolioSummaryArr = [];
 
   const cryptoTicker = coinList.map((ticker, index) => {
     return (
@@ -55,70 +60,88 @@ function Portfolio({ coinList }) {
 
   const tableHeadings = portfolio.map((entry, index) => {
     return (
-      <tr key={index}>
-        <td>{entry.coin.toUpperCase()}</td>
-        <td>{entry.dateOfBuy}</td>
-        <td>{entry.quantity}</td>
-        <td>${entry.price}</td>
-        <td>{!entry.gasCost ? "-" : entry.gasCost}</td>
-      </tr>
+      <>
+        <tr key={index + 1}>
+          <td>{entry.coin.toUpperCase()}</td>
+          <td>{entry.dateOfBuy}</td>
+          <td>{entry.quantity}</td>
+          <td>{entry.price.toLocaleString()}</td>
+          <td>{!entry.gasCost ? "-" : entry.gasCost}</td>
+        </tr>
+        {/* <button>delete</button> */}
+      </>
     );
   });
 
   //portfolio calculations
 
   //put total costs into array
-  const totalCostUSD = portfolio.map((cost) => {
-    return cost.price * cost.quantity;
+  const totalCostUSD = portfolio.map((trade) => {
+    return trade.price * trade.quantity;
   });
+
   //calculate sum of costs
-  function sumCostUSD() {
-    let sum = 0;
-    for (let i = 0; i < totalCostUSD.length; i++) {
-      sum += parseInt(totalCostUSD[i]);
-    }
-    return sum;
+  let sumPortfolio = 0;
+  for (let i = 0; i < totalCostUSD.length; i++) {
+    sumPortfolio += parseInt(totalCostUSD[i]);
   }
+  // console.log(sumPortfolio);
 
-  const totalPortfolioValue = portfolio.map((entry) => {
-    return {};
+  // console.log(coinList);
+  console.log(portfolio);
+
+  portfolio.forEach((trade) => {
+    if (!portfolioQuantities[trade.coin]) {
+      portfolioQuantities[trade.coin.toLowerCase()] = {
+        coin: trade.coin,
+        quantity: Number(trade.quantity),
+      };
+    } else {
+      console.log(trade.coin);
+      portfolioQuantities[trade.coin] = {
+        coin: trade.coin,
+        quantity:
+          Number(trade.quantity) + portfolioQuantities[trade.coin].quantity,
+      };
+    }
+    //loop over coinList and use find()
+
+    const coinPrice = coinList.find((coin) => {
+      if (coin.symbol.toLowerCase() === trade.coin) {
+        portfolioQuantities[trade.coin]["current_price"] = coin.current_price;
+      }
+    });
   });
 
-  //calculate current price
-  //loop over portfolio. Create object with all tokens, add total quantity of holdings, and total current value of tokens (pulled in from a variable from parent scope)
-
-  console.log("coinList: ", coinList);
-  console.log("portfolio", portfolio);
-
-  //create object where each key is a token. No duplicates
-
-  function portfolioValueCalc() {
-    //create object of tokens:quantity
-    const portfolioQuantities = {};
-    portfolio.forEach((trade) => {
-      if (!portfolioQuantities[trade.coin]) {
-        portfolioQuantities[trade.coin.toLowerCase()] = {
-          quantity: Number(trade.quantity),
-        };
-      } else {
-        portfolioQuantities[trade.coin] = {
-          quantity:
-            Number(trade.quantity) + portfolioQuantities[trade.coin].quantity,
-        };
-      }
-      //loop over coinList and use find()
-
-      const coinPrice = coinList.find((coin) => {
-        if (coin.symbol.toLowerCase() === trade.coin) {
-          console.log(coin.current_price);
-          portfolioQuantities[trade.coin]["current_price"] = coin.current_price;
-        }
-      });
-    });
-    console.log("portfolioQuantities", portfolioQuantities);
+  for (let coin in portfolioQuantities) {
+    portfolioSummaryArr.push(portfolioQuantities[coin]);
   }
+  console.log(portfolioSummaryArr);
 
-  portfolioValueCalc();
+  // console.log("portfolioQuantities", portfolioQuantities);
+  //populate portfolio summary table data
+
+  const portfolioSummary = portfolioSummaryArr.map((coin) => {
+    let totalValue = (coin.quantity * coin.current_price).toLocaleString();
+    return (
+      <tr key={coin.coin}>
+        <td>{coin.coin.toUpperCase()}</td>
+        <td>{coin.quantity}</td>
+        <td>${totalValue}</td>
+        <td>{Number(totalValue)}</td>
+      </tr>
+    );
+  });
+
+  // console.log(portfolioSummary);
+
+  //set current portfolio value
+  let totalPortfolioValue = 0;
+  for (let coin in portfolioQuantities) {
+    totalPortfolioValue +=
+      portfolioQuantities[coin].quantity *
+      portfolioQuantities[coin].current_price;
+  }
 
   return (
     <div className="portfolio-container">
@@ -191,6 +214,31 @@ function Portfolio({ coinList }) {
       </div>
 
       <div className="column-right">
+        <h3>Portfolio summary</h3>
+        <table className="summary-table">
+          <thead>
+            <tr>
+              <th>Coin</th>
+              <th>Total Quantity</th>
+              <th>Total Value</th>
+              <th>Percentage of Holdings</th>
+            </tr>
+          </thead>
+          <tbody>{portfolioSummary}</tbody>
+        </table>
+
+        <p>
+          <strong>Total Investment:</strong> ${sumPortfolio.toLocaleString()}
+        </p>
+        <p>
+          <strong>Current portfolio value:</strong> $
+          {totalPortfolioValue.toLocaleString()}
+        </p>
+        <p>
+          <strong>Net Profit:</strong> $
+          {(totalPortfolioValue - sumPortfolio).toLocaleString()}
+        </p>
+
         <h3>Your Trades</h3>
         <table className="table">
           <thead>
@@ -202,26 +250,7 @@ function Portfolio({ coinList }) {
               <th>Gas Cost</th>
             </tr>
           </thead>
-          <tbody>
-            {tableHeadings}
-            <tr>
-              <td>Totals</td>
-            </tr>
-            <tr />
-            <tr />
-
-            <tr>
-              <td>
-                <strong>Total expenses:</strong> $
-                {sumCostUSD().toLocaleString()}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Current portfolio value:</strong> {null}
-              </td>
-            </tr>
-          </tbody>
+          <tbody>{tableHeadings}</tbody>
         </table>
       </div>
     </div>
