@@ -6,6 +6,7 @@ function Portfolio({ coinList }) {
   const [coin, setCoin] = useState("btc");
   const [dateOfBuy, setDateOfBuy] = useState("");
   const [price, setPrice] = useState("");
+  const [typeOfOrder, setTypeOfOrder] = useState("buy");
   const [gasCost, setGasCost] = useState("");
   const [quantity, setQuantity] = useState("");
   const [remarks, setRemarks] = useState("");
@@ -31,6 +32,7 @@ function Portfolio({ coinList }) {
       coin: coin.toLowerCase(),
       dateOfBuy,
       price,
+      typeOfOrder,
       gasCost,
       quantity,
       remarks,
@@ -63,10 +65,14 @@ function Portfolio({ coinList }) {
       <>
         <tr key={index + 1}>
           <td>{entry.coin.toUpperCase()}</td>
+          <td>{entry.typeOfOrder}</td>
           <td>{entry.dateOfBuy}</td>
           <td>{entry.quantity}</td>
-          <td>{entry.price.toLocaleString()}</td>
+          <td>{entry.price}</td>
           <td>{!entry.gasCost ? "-" : entry.gasCost}</td>
+          <td>
+            ${(entry.gasCost + entry.quantity * entry.price).toLocaleString()}
+          </td>
         </tr>
         {/* <button>delete</button> */}
       </>
@@ -85,10 +91,6 @@ function Portfolio({ coinList }) {
   for (let i = 0; i < totalCostUSD.length; i++) {
     sumPortfolio += parseInt(totalCostUSD[i]);
   }
-  // console.log(sumPortfolio);
-
-  // console.log(coinList);
-  console.log(portfolio);
 
   portfolio.forEach((trade) => {
     if (!portfolioQuantities[trade.coin]) {
@@ -97,7 +99,6 @@ function Portfolio({ coinList }) {
         quantity: Number(trade.quantity),
       };
     } else {
-      console.log(trade.coin);
       portfolioQuantities[trade.coin] = {
         coin: trade.coin,
         quantity:
@@ -116,7 +117,7 @@ function Portfolio({ coinList }) {
   for (let coin in portfolioQuantities) {
     portfolioSummaryArr.push(portfolioQuantities[coin]);
   }
-  console.log(portfolioSummaryArr);
+  // console.log(portfolioSummaryArr);
 
   //set current portfolio value
   let totalPortfolioValue = 0;
@@ -132,7 +133,7 @@ function Portfolio({ coinList }) {
       <tr key={coin.coin}>
         <td>{coin.coin.toUpperCase()}</td>
         <td>{coin.quantity}</td>
-        <td>${totalValue.toLocaleString()}</td>
+        <td>${totalValue.toFixed(0).toLocaleString()}</td>
         <td>{parseInt((totalValue / totalPortfolioValue) * 100)}%</td>
       </tr>
     );
@@ -142,12 +143,16 @@ function Portfolio({ coinList }) {
 
   return (
     <div className="portfolio-container">
+      <h2>Portfolio</h2>
       <div className="column-left">
-        <h2>Portfolio</h2>
+        <h3>Enter Your Trades</h3>
+        <h6>(Only USD pairs supported)</h6>
         <form onSubmit={handleSubmitCoin}>
+          <label>Asset </label>
           <select value={coin} onChange={(e) => setCoin(e.target.value)}>
             {cryptoTicker}
           </select>
+          <br />
           <br />
           <label htmlFor="dateOfBuy">
             Date of purchase{" "}
@@ -161,8 +166,19 @@ function Portfolio({ coinList }) {
             />
           </label>
           <br />
+          <br />
+          <label>Order type </label>
+          <select
+            value={typeOfOrder}
+            onChange={(e) => setTypeOfOrder(e.target.value)}
+          >
+            <option value="buy">buy</option>
+            <option value="sell">sell</option>
+          </select>
+          <br />
+          <br />
           <label htmlFor="price">
-            Price{" "}
+            Price (enter negative number if sell order){" "}
             <input
               type="number"
               value={price}
@@ -170,6 +186,8 @@ function Portfolio({ coinList }) {
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>
+
+          <br />
           <br />
           <label htmlFor="gasCost">
             Gas cost{" "}
@@ -180,6 +198,7 @@ function Portfolio({ coinList }) {
               onChange={(e) => setGasCost(e.target.value)}
             />
           </label>
+          <br />
           <br />
           <label htmlFor="quantity">
             Quantity{" "}
@@ -192,6 +211,7 @@ function Portfolio({ coinList }) {
               }}
             />
           </label>
+          <br />
           <br />
           <label htmlFor="remarks">
             Remarks{" "}
@@ -241,10 +261,12 @@ function Portfolio({ coinList }) {
           <thead>
             <tr>
               <th>Coin</th>
+              <th>Order type</th>
               <th>Date of trade</th>
               <th>Quantity</th>
-              <th>Cost basis (USD)</th>
+              <th>Cost Basis</th>
               <th>Gas Cost</th>
+              <th>Investment Cost</th>
             </tr>
           </thead>
           <tbody>{tableHeadings}</tbody>

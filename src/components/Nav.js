@@ -1,14 +1,15 @@
 import React from "react";
-import { Route, NavLink, Link } from "react-router-dom";
+import { NavLink, Routes, Route } from "react-router-dom";
+import Portfolio from "./Portfolio";
 
-function Nav() {
+function Nav({ coinList }) {
   return (
     <nav className="nav-bar">
-      <Link to="/">Home</Link>
-      <Link to exact="/portfolio">
-        Track Your Portfolio
-      </Link>
-      <a href="/favorites">Your Favorites</a>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/portfolio">Track Your Portfolio</NavLink>
+      <NavLink to exact="/favorites">
+        Your Favorites
+      </NavLink>
     </nav>
   );
 }

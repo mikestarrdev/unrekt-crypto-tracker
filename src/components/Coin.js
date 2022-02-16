@@ -38,9 +38,6 @@ function Coin({
       <p>
         <strong>ATH:</strong> ${ath.toLocaleString()}
       </p>
-      <p className="small-stats">
-        <strong>Last updated:</strong> <em>new Date({lastUpdated})</em>
-      </p>
       <p>
         <strong>Price change % 24h:</strong> ${priceChangePercent24h}
       </p>

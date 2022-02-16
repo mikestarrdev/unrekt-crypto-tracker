@@ -1,12 +1,12 @@
 import react, { useEffect, useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Coin from "./Coin";
 import Filter from "./Filter";
 import Portfolio from "./Portfolio";
 
-function TrackerContainer() {
-  const [coinList, setCoinList] = useState([]);
+function TrackerContainer({ coinList, setCoinList }) {
+  // const [coinList, setCoinList] = useState([]);
   const [searched, setSearched] = useState("");
   const [displayedResults, setDisplayedResults] = useState("50");
 
@@ -57,7 +57,6 @@ function TrackerContainer() {
         image={coin.image}
         currentPrice={coin.current_price}
         ath={coin.ath}
-        lastUpdated={coin.last_updated}
         high24h={coin.high_24h}
         low24h={coin.low_24h}
         priceChangePercent24h={coin.price_change_percentage_24h}
@@ -74,7 +73,7 @@ function TrackerContainer() {
           handleSearched={handleSearched}
           handleDisplayedResults={handleDisplayedResults}
         />
-        <Portfolio coinList={coinList} />
+        {/* <Portfolio coinList={coinList} /> */}
         <div>{coins}</div>
       </div>
     </div>
