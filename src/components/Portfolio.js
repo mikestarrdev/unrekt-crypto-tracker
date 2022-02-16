@@ -118,23 +118,6 @@ function Portfolio({ coinList }) {
   }
   console.log(portfolioSummaryArr);
 
-  // console.log("portfolioQuantities", portfolioQuantities);
-  //populate portfolio summary table data
-
-  const portfolioSummary = portfolioSummaryArr.map((coin) => {
-    let totalValue = (coin.quantity * coin.current_price).toLocaleString();
-    return (
-      <tr key={coin.coin}>
-        <td>{coin.coin.toUpperCase()}</td>
-        <td>{coin.quantity}</td>
-        <td>${totalValue}</td>
-        <td>{Number(totalValue)}</td>
-      </tr>
-    );
-  });
-
-  // console.log(portfolioSummary);
-
   //set current portfolio value
   let totalPortfolioValue = 0;
   for (let coin in portfolioQuantities) {
@@ -142,6 +125,20 @@ function Portfolio({ coinList }) {
       portfolioQuantities[coin].quantity *
       portfolioQuantities[coin].current_price;
   }
+
+  const portfolioSummary = portfolioSummaryArr.map((coin) => {
+    let totalValue = coin.quantity * coin.current_price;
+    return (
+      <tr key={coin.coin}>
+        <td>{coin.coin.toUpperCase()}</td>
+        <td>{coin.quantity}</td>
+        <td>${totalValue.toLocaleString()}</td>
+        <td>{parseInt((totalValue / totalPortfolioValue) * 100)}%</td>
+      </tr>
+    );
+  });
+
+  // console.log(portfolioSummary);
 
   return (
     <div className="portfolio-container">

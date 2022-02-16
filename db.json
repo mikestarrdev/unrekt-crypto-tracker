@@ -89,6 +89,15 @@
       "quantity": "1",
       "remarks": "",
       "id": 11
+    },
+    {
+      "coin": "luna",
+      "dateOfBuy": "",
+      "price": "55",
+      "gasCost": "",
+      "quantity": "1000",
+      "remarks": "",
+      "id": 12
     }
   ]
 }
