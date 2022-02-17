@@ -39,6 +39,16 @@
       "quantity": "1",
       "remarks": "",
       "id": 5
+    },
+    {
+      "coin": "avax",
+      "dateOfBuy": "2022-02-01",
+      "price": "488",
+      "typeOfOrder": "buy",
+      "gasCost": "3",
+      "quantity": "300",
+      "remarks": "",
+      "id": 6
     }
   ],
   "favorites": [
@@ -71,6 +81,54 @@
       "symbol": "doge",
       "isFavorite": true,
       "id": 5
+    },
+    {
+      "name": "tether",
+      "symbol": "usdt",
+      "isFavorite": true,
+      "id": 6
+    },
+    {
+      "name": "ripple",
+      "symbol": "xrp",
+      "isFavorite": true,
+      "id": 7
+    },
+    {
+      "name": "tether",
+      "symbol": "usdt",
+      "isFavorite": true,
+      "id": 8
+    },
+    {
+      "name": "cosmos",
+      "symbol": "atom",
+      "isFavorite": true,
+      "id": 9
+    },
+    {
+      "name": "solana",
+      "symbol": "sol",
+      "isFavorite": true,
+      "id": 10
+    },
+    {
+      "name": "avalanche-2",
+      "symbol": "AVAX",
+      "isFavorite": true,
+      "id": 11
+    },
+    {
+      "name": "avalanche-2",
+      "symbol": "AVAX",
+      "isFavorite": true,
+      "id": 12
+    },
+    {
+      "name": "terra-luna",
+      "symbol": "luna",
+      "isFavorite": true,
+      "id": 13
     }
   ]
 }
