@@ -48,9 +48,9 @@ function Favorites({
   //   });
 
   return (
-    <div className="favorites">
-      <h2>favorites</h2>
-      {favorites}
+    <div className="tracking-container">
+      <h2>Your Favorites</h2>
+      <div className="favorites coin-container">{favorites}</div>
     </div>
   );
 }

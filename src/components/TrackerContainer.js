@@ -18,7 +18,7 @@ function TrackerContainer({ coinList, setCoinList }) {
   useEffect(() => {
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
       )
       .then((res) => res)
       .catch((err) => {
@@ -112,8 +112,8 @@ function TrackerContainer({ coinList, setCoinList }) {
                 handleDisplayedResults={handleDisplayedResults}
               />
               <br />
-              <h3>Tracker Container</h3>
-              <div>{coins}</div>
+              <h2>Top 100 coins</h2>
+              <div className="coin-container">{coins}</div>
             </div>
           }
         />
@@ -125,8 +125,6 @@ function TrackerContainer({ coinList, setCoinList }) {
               coinList={coinList}
               favoritesDbJSON={favoritesDbJSON}
               favoriteSymbolListArr={favoriteSymbolListArr}
-              // setFavoritesDbJSON={setFavoritesDbJSON}
-              // displayFavorites={displayFavorites}
             />
           }
         />

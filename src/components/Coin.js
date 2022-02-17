@@ -54,7 +54,7 @@ function Coin({
   }
 
   return (
-    <div className="coin-container">
+    <div className="coin">
       <h3>
         <img className="coin-image" src={image} alt={name} /> {name}
       </h3>{" "}

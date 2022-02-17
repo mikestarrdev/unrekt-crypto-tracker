@@ -2,16 +2,16 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="foot">
+    <div className="footer">
       <p>
-        github:
+        <strong>github:</strong>
         <br />
         <a href="https://github.com/personnamedmike">personnamedmike</a>
         <br />
         <a href="https://github.com/tzjorden">tzjorden</a>
       </p>
       <p>
-        Data pulled from{" "}
+        <strong>Data from</strong> <br />
         <a href="https://www.coingecko.com/en/api">CoinGecko</a>
       </p>
     </div>

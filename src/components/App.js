@@ -33,7 +33,7 @@ function App() {
           }
         />
       </Routes>
-      {/* <Footer className="foot" /> */}
+      <Footer />
     </>
   );
 }
