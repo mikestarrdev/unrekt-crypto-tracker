@@ -1,4 +1,3 @@
-import { tab } from "@testing-library/user-event/dist/tab";
 import react, { useState, useEffect } from "react";
 
 function Portfolio({ coinList }) {
@@ -60,25 +59,6 @@ function Portfolio({ coinList }) {
       });
   }, [portfolioEntry]);
 
-  const tableHeadings = portfolio.map((entry, index) => {
-    return (
-      <>
-        <tr key={index + 1}>
-          <td>{entry.coin.toUpperCase()}</td>
-          <td>{entry.typeOfOrder}</td>
-          <td>{entry.dateOfBuy}</td>
-          <td>{entry.quantity}</td>
-          <td>{entry.price}</td>
-          <td>{!entry.gasCost ? "-" : entry.gasCost}</td>
-          <td>
-            ${(entry.gasCost + entry.quantity * entry.price).toLocaleString()}
-          </td>
-        </tr>
-        {/* <button>delete</button> */}
-      </>
-    );
-  });
-
   //portfolio calculations
 
   //put total costs into array
@@ -132,7 +112,7 @@ function Portfolio({ coinList }) {
     return (
       <tr key={coin.coin}>
         <td>{coin.coin.toUpperCase()}</td>
-        <td>{coin.quantity}</td>
+        <td>{coin.quantity.toFixed(2)}</td>
         <td>${totalValue.toFixed(0).toLocaleString()}</td>
         <td>{parseInt((totalValue / totalPortfolioValue) * 100)}%</td>
       </tr>
@@ -140,6 +120,32 @@ function Portfolio({ coinList }) {
   });
 
   // console.log(portfolioSummary);
+
+  const tableHeadings = portfolio.map((entry, index) => {
+    return (
+      <>
+        <tr key={index + 1}>
+          <td>{entry.coin.toUpperCase()}</td>
+          <td>{entry.typeOfOrder}</td>
+          <td>{entry.dateOfBuy}</td>
+          <td>{entry.quantity}</td>
+          <td>{entry.price}</td>
+          <td>{!entry.gasCost ? "-" : entry.gasCost}</td>
+          <td>
+            ${(entry.gasCost + entry.quantity * entry.price).toLocaleString()}
+          </td>
+          <td>
+            <button
+              value={entry.id}
+              onClick={(e) => console.log(e.target.value)}
+            >
+              delete
+            </button>
+          </td>
+        </tr>
+      </>
+    );
+  });
 
   return (
     <div className="portfolio-container">
@@ -178,7 +184,8 @@ function Portfolio({ coinList }) {
           <br />
           <br />
           <label htmlFor="price">
-            Price (enter negative number if sell order){" "}
+            Price
+            <br />
             <input
               type="number"
               value={price}
@@ -201,7 +208,8 @@ function Portfolio({ coinList }) {
           <br />
           <br />
           <label htmlFor="quantity">
-            Quantity{" "}
+            Quantity (enter negative number if sell order)
+            <br />
             <input
               type="number"
               value={quantity}

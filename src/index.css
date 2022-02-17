@@ -28,6 +28,7 @@ h3 {
 }
 
 .nav-bar {
+  display: flex;
   background-color: #333;
   overflow: hidden;
 }
@@ -89,6 +90,13 @@ h3 {
 
 .coin-rank {
   font-size: small;
+}
+
+.fav-btn {
+  background-color: lightgray;
+  color: black;
+  padding: 0.5vh;
+  border-radius: 10px;
 }
 
 .portfolio-container:after {

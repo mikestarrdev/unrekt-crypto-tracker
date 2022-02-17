@@ -4,11 +4,15 @@ function Footer() {
   return (
     <div className="foot">
       <p>
-        Data pulled from{" "}
-        <a href="https://www.coingecko.com/en/api">CoinGecko.com</a>
+        github:
+        <br />
+        <a href="https://github.com/personnamedmike">personnamedmike</a>
+        <br />
+        <a href="https://github.com/tzjorden">tzjorden</a>
       </p>
       <p>
-        github: <a href="https://github.com/personnamedmike">personnamedmike</a>
+        Data pulled from{" "}
+        <a href="https://www.coingecko.com/en/api">CoinGecko</a>
       </p>
     </div>
   );
