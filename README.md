@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+Unrekt Crypto Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Overview
 
-## Available Scripts
+This project displays the prices and other information of 100 cryptocurrencies. It also allows the user to like a crypto and add it to their favorites list. Once the user likes it the price and quantity of the coin is saved to the local database. The Portfolio.js component displays the user's current holdings, the Coin.js component displays the details of each coin and the Favorites.js component displays the users favorited coins.
 
-In the project directory, you can run:
+We used React to create the project and CoinGecko API to access the crypto data. 
 
-### `npm start`
+This project was challenging as we recently started learning React but it was also a great learning opportunity as we both are interested in cryptocurrency. 
+How to set up the project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+How to use Crypto Tracker:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Clone the repo to your machine, and run npm install && npm start
+- To get the server up and running run the following command: npm run start:server
+- Endpoints are the following:
+  http://localhost:4001/favorites
+  http://localhost:4001/portfolio  
+- Currently, you must manually delete data from /favorites and /portfolio endpoints if you want to reset your stats and favorites
 
-### `npm test`
+Crypto tracker and free and open source, so add any additional features you'd like!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Credits:
 
-### `npm run build`
+Cryptocurrenty data for this project was pulled from CoinGecko's free API: https://www.coingecko.com/en/api/documentation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Collaborators on the project:
+-https://github.com/personnamedmike
+-https://github.com/tzjorden
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+(This file was last updated February 18, 2022)
