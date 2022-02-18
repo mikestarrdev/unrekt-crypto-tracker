@@ -18,7 +18,6 @@ function Favorites({
   console.log("displayFavorites", displayFavorites);
 
   const favorites = displayFavorites.map((favorite, index) => {
-    console.log(favorite);
     return (
       <Coin
         coin={favorite}
@@ -36,21 +35,10 @@ function Favorites({
     );
   });
 
-  //for coin in coinList array, if coin.id is found in favorites, add it to favoritesNoDupes
-
-  //   const favoritesNoDupes = coinList.filter((coin) => {});
-
-  //   console.log(favoritesNoDupes);
-
-  //   const renderFavorites = favorites.map((favorite, index) => {
-  //     console.log(favorite);
-  //     return <Coin coin={favorite.name} key={index} />;
-  //   });
-
   return (
     <div className="tracking-container">
       <h2>Your Favorites</h2>
-      <div className="favorites coin-container">{favorites}</div>
+      <div className="favorites favorites-coin-container">{favorites}</div>
     </div>
   );
 }

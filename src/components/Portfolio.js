@@ -234,7 +234,9 @@ function Portfolio({ coinList }) {
           </label>
           <br />
           <br />
-          <button type="submit">Enter stats</button>
+          <button className="form-btn" type="submit">
+            Enter stats
+          </button>
         </form>
       </div>
 

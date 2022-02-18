@@ -7,12 +7,13 @@ import Portfolio from "./Portfolio";
 import Favorites from "./Favorites";
 
 function TrackerContainer({ coinList, setCoinList }) {
-  // const [coinList, setCoinList] = useState([]);
   const [searched, setSearched] = useState("");
   const [displayedResults, setDisplayedResults] = useState();
   const [favoriteList, setFavoriteList] = useState([]);
   const [favoritesDbJSON, setFavoritesDbJSON] = useState([]);
   const [favoriteSymbolList, setFavoriteSymbolList] = useState([]);
+
+  console.log(favoriteList);
 
   //fetch from GoinGecko API
   useEffect(() => {

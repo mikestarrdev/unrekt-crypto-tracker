@@ -65,11 +65,21 @@ code {
   width: 100%;
   margin: auto;
   background-color: #feffef;
+  padding-bottom: 3em;
 }
 
 .coin-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.favorites-coin-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding-left: 1em;
   padding-right: 1em;
 }
@@ -78,7 +88,7 @@ code {
   float: left;
   clear: none;
   border-radius: 5px;
-  width: 15%;
+  width: 12%;
   height: auto;
   padding: 1em;
   margin: 0.5em;
@@ -121,6 +131,14 @@ code {
   text-align: center;
 }
 
+.form-btn {
+  border-radius: 10px;
+  padding: 0.5em;
+  background-color: rgb(233, 233, 233);
+  font-weight: bold;
+  border-radius: 1px solid darkgray;
+}
+
 /* Coin.js styles */
 
 .coin-image {
@@ -160,12 +178,12 @@ code {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-radius: 7px;
+  border-radius: 10px;
   border: 1px solid gray;
   padding: 5px;
   padding-right: 10px;
   padding-left: 8px;
-  background-color: #e9fcfb;
+  background-color: rgb(233, 232, 232);
   margin-top: 1em;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
 }

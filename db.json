@@ -1,54 +1,14 @@
 {
   "portfolio": [
     {
-      "coin": "avax",
-      "dateOfBuy": "2022-01-04",
-      "price": "99",
-      "typeOfOrder": "buy",
-      "gasCost": "",
-      "quantity": "50",
-      "remarks": "",
-      "id": 1
-    },
-    {
-      "coin": "ftm",
-      "dateOfBuy": "2022-01-04",
-      "price": "2",
-      "typeOfOrder": "buy",
-      "gasCost": "",
-      "quantity": "400",
-      "remarks": "",
-      "id": 3
-    },
-    {
       "coin": "btc",
-      "dateOfBuy": "2022-02-04",
-      "price": "23000",
+      "dateOfBuy": "2019-06-18",
+      "price": "20000",
       "typeOfOrder": "buy",
       "gasCost": "",
       "quantity": "3",
       "remarks": "",
-      "id": 4
-    },
-    {
-      "coin": "btc",
-      "dateOfBuy": "2022-02-04",
-      "price": "23000",
-      "typeOfOrder": "sell",
-      "gasCost": "",
-      "quantity": "1",
-      "remarks": "",
-      "id": 5
-    },
-    {
-      "coin": "avax",
-      "dateOfBuy": "2022-02-01",
-      "price": "488",
-      "typeOfOrder": "buy",
-      "gasCost": "3",
-      "quantity": "300",
-      "remarks": "",
-      "id": 6
+      "id": 1
     }
   ],
   "favorites": [
@@ -65,70 +25,10 @@
       "id": 2
     },
     {
-      "name": "tether",
-      "symbol": "usdt",
-      "isFavorite": true,
-      "id": 3
-    },
-    {
-      "name": "avalanche-2",
-      "symbol": "AVAX",
-      "isFavorite": true,
-      "id": 4
-    },
-    {
-      "name": "dogecoin",
-      "symbol": "doge",
-      "isFavorite": true,
-      "id": 5
-    },
-    {
-      "name": "tether",
-      "symbol": "usdt",
-      "isFavorite": true,
-      "id": 6
-    },
-    {
-      "name": "ripple",
-      "symbol": "xrp",
-      "isFavorite": true,
-      "id": 7
-    },
-    {
-      "name": "tether",
-      "symbol": "usdt",
-      "isFavorite": true,
-      "id": 8
-    },
-    {
-      "name": "cosmos",
-      "symbol": "atom",
-      "isFavorite": true,
-      "id": 9
-    },
-    {
       "name": "solana",
       "symbol": "sol",
       "isFavorite": true,
-      "id": 10
-    },
-    {
-      "name": "avalanche-2",
-      "symbol": "AVAX",
-      "isFavorite": true,
-      "id": 11
-    },
-    {
-      "name": "avalanche-2",
-      "symbol": "AVAX",
-      "isFavorite": true,
-      "id": 12
-    },
-    {
-      "name": "terra-luna",
-      "symbol": "luna",
-      "isFavorite": true,
-      "id": 13
+      "id": 3
     }
   ]
 }

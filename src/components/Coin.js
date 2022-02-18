@@ -18,14 +18,11 @@ function Coin({
   favoritesDbJSON,
   favoriteSymbolList,
 }) {
-  // const favoriteSymbolList = favoritesDbJSON.map((entry) => entry.symbol);
-
   // console.log(favoritesDbJSON);
   function handleFavClick(e) {
     e.preventDefault();
-
     console.log(favoriteSymbolList, coin.symbol);
-    if (!favoriteSymbolList.includes(coin.symbol)) {
+    if (!favoriteSymbolList.includes(coin.symbol.toLowerCase())) {
       console.log("coin not in favoriteSYmbolList, adding to db.json");
       setFavoriteList(() => {
         return [...favoriteList, coin];
@@ -35,7 +32,7 @@ function Coin({
         name: coin.id,
         symbol: coin.symbol,
         isFavorite: true,
-      }).then((data) => console.log(data));
+      });
     } else {
       console.log("not adding");
     }
